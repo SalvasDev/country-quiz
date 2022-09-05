@@ -1,0 +1,10 @@
+{
+    "terminal.integrated.fontFamily": "monospace",
+    "terminal.integrated.enablePersistentSessions": true,
+    "terminal.integrated.enableFileLinks": true,
+    "terminal.integrated.enableMultiLinePasteWarning": true,
+    "terminal.integrated.tabs.defaultColor": null,
+    "terminal.integrated.shellIntegration.decorationsEnabled": "both",
+    "terminal.integrated.fontSize": 16,
+    "terminal.integrated.environmentChangesIndicator": "off"
+}
