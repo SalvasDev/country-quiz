@@ -12,7 +12,9 @@ const Container = styled.div`
   width: min(95%, 464px);
   margin: 10rem auto 10rem auto;
 
- 
+@media (max-width: 443px ){
+  margin-top: 6rem;
+  }  
 
 
   .card {
@@ -33,9 +35,10 @@ const Container = styled.div`
   }
 
   @media (max-width: 443px ){
-    width: min(95%, 464px);
+    width: min(95%, 375px);
     margin-right: auto;
     margin-left: auto;
+    max-width: 80%;
   }  
 
 
@@ -51,7 +54,8 @@ const Container = styled.div`
     }
 
     @media (max-width: 443px ){
-     font-size:24px;
+     font-size:20px;
+     margin-left: 4rem;
     }
   }
   
@@ -67,6 +71,10 @@ const Container = styled.div`
   .question {
     color: #2F527B;
     font-size: 24px;
+
+    @media (max-width: 443px ){
+    font-size: 20px;
+     }  
   }
 
 
@@ -90,11 +98,6 @@ const Container = styled.div`
       }  
     
     }
-
-  .link__style {
-    margin-right: 0;
-    margin-left: auto;
-  }
 
 `;
 

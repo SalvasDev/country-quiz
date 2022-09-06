@@ -26,14 +26,20 @@ button {
       border: none;
       background-color: #F9A826;
       color: white;
-    }    
-  
+    }  
+    
+    @media (max-width: 443px ){      
+      font-size: 1.6rem;
+
+    }
+
 
   }
 
     .solution {
       font-size: 1.8rem;
-      margin-left: 4rem;
+      margin-left: 3rem;
+
     }
 
     .icon {
