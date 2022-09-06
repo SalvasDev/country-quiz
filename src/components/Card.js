@@ -65,6 +65,13 @@ const Container = styled.div`
     margin-right: -32px;
     margin-left: auto;
     margin-top: -14.5rem;
+
+    @media (max-width: 443px ){
+      width: 120px;
+      margin-top: -12rem;
+
+    }
+
   }
 
 
@@ -97,6 +104,9 @@ const Container = styled.div`
         background-color:#fac269;      
       }  
     
+       @media (max-width: 443px ){
+        width: 40%;
+       } 
     }
 
 `;

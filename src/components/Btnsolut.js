@@ -29,7 +29,7 @@ button {
     }  
     
     @media (max-width: 443px ){      
-      font-size: 1.6rem;
+      font-size: 1.8rem;
 
     }
 
@@ -40,6 +40,11 @@ button {
       font-size: 1.8rem;
       margin-left: 3rem;
 
+      @media (max-width: 443px ){      
+        margin-left: 1.5rem;
+        font-size: 1.6rem;
+
+      }
     }
 
     .icon {
@@ -48,25 +53,25 @@ button {
     }
 
     .normal button {
-    display: flex;
-    height: 56px;
-    background-color: transparent;
-    border: 2px solid rgba(96, 102, 208, 0.7);
-    border-radius: 12px;
-    color: rgba(96, 102, 208, 0.8);
-    text-align: left;
-    padding-left: 2rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 24px;
-    font-weight: 500;
-    cursor: pointer;
-    align-items: center;
-    width: 100%;
+        display: flex;
+        height: 56px;
+        background-color: transparent;
+        border: 2px solid rgba(96, 102, 208, 0.7);
+        border-radius: 12px;
+        color: rgba(96, 102, 208, 0.8);
+        text-align: left;
+        padding-left: 2rem;
+        font-family: 'Poppins', sans-serif;
+        font-size: 24px;
+        font-weight: 500;
+        cursor: pointer;
+        align-items: center;
+        width: 100%;
 
-    &:hover  {
-      border: none;
-      background-color: #F9A826;
-      color: white;
+        &:hover  {
+          border: none;
+          background-color: #F9A826;
+          color: white;
     }    
   
 
