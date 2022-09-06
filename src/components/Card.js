@@ -4,23 +4,41 @@ import { useCountries } from '../hooks/useCountries';
 import CapitalQuestion from './CapitalQuestion';
 import FlagQuestion from './FlagQuestion';
 import ListCountries from './ListCountries';
+import Score from './Score';
 import styled from '@emotion/styled';
-
 
 
 const Container = styled.div`
   width: min(95%, 464px);
   margin: 10rem auto 10rem auto;
 
+ 
+
+
   .card {
     width: 464px;
     height: 100%;
     padding: 68px 32px;
+    padding-bottom: 4rem;
     background-color: white;
     display: flex;
     flex-direction: column;
     border-radius: 24px;
     row-gap: 2.5rem;
+
+   @media (max-width: 543px ){
+    width: min(95%, 464px);
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (max-width: 443px ){
+    width: min(95%, 464px);
+    margin-right: auto;
+    margin-left: auto;
+  }  
+
+
   }
 
   .title__quiz {
@@ -28,7 +46,15 @@ const Container = styled.div`
     font-size: 36px;
     margin-bottom: 1rem;
 
+    @media (max-width: 543px ){
+     font-size: 32px;
+    }
+
+    @media (max-width: 443px ){
+     font-size:24px;
+    }
   }
+  
 
   .logo {
     width: 162px;
@@ -73,73 +99,65 @@ const Container = styled.div`
 `;
 
 
-const Card = ({ flag, setFlag, numTimes, numHits }) => {
+const Card = ({ dataFlag, numTimes, handleForce }) => {
 
-const { countries } = useCountries(flag)
-const [ showNext, setShowNext] = useState(true)
 const [ times, setTimes ] = useState(numTimes)
+const { countries } = useCountries(times)
+const [ flag, setFlag ] = useState(dataFlag)
+
+
 console.log(times)
 
-
-  const handleSubmit = (e, flag) => {
+const handleSubmit = (e, flag) => {
     e.preventDefault()
 
     if (flag === false) {
-      localStorage.setItem('Flag', true )
       setFlag(true)
       setTimes(times+1)      
-      console.log(`Estas son las veces ${times}`)
 
     } else {
-      localStorage.setItem('Flag', false )
       setFlag(false)
       setTimes(times+1)   
-      console.log(`Estas son las veces ${times}`)
-
     }
   }
 
   
   let { capital, flags, idd, } = countries[0] || {}
   let iddRight = (idd?.root + idd?.suffixes).toString()
+  let limitTimes = 5;
 
   return (
     <Container>
       <h1 className="title__quiz">COUNTRY QUIZ</h1>
       <div className="card">
-          <img className="logo" src={logo} alt="world" />                             
+          { times < limitTimes ?  <img className="logo" src={logo} alt="world" /> : null  }                           
           
+      
+          { !flag && times < limitTimes ?  <CapitalQuestion capital = {capital} /> : flag && times < limitTimes ? <FlagQuestion flags = {flags}/> : null }   
 
-          { !flag ?  <CapitalQuestion capital = {capital} /> : <FlagQuestion flags = {flags}/> }   
+          { times < limitTimes
+            ?
+            <ListCountries 
+              countries={countries}
+              iddRight = {iddRight}
+            />  
 
-          <ListCountries 
-            countries={countries}
-            iddRight = {iddRight}
-            numHits = {numHits}
-          />  
-                  
-              
-          { showNext ?  <button className="next" onClick = { e => {handleSubmit(e, flag)} }>Next</button> : null  }
+            :
+            <Score  
+              handleForce = {handleForce}            
+             />
+          }        
+          
+          { times < limitTimes ?  <button className="next" onClick = { e => {handleSubmit(e, flag)} }>Next</button> : null  }
 
       </div>
     </Container>
   )
 }
 
-export default React.memo(Card )
+export default React.memo(Card)
 
 // {dataArr.map(data => <Button isDisabled={selectedButtonId === data.id} /> )}
 
 
    
-          
-          // { !flag ?  <CapitalQuestion capital = {capital} /> : <FlagQuestion flags = {flags}/> }   
-
-          // <ListCountries 
-          //   countries={countries}
-          //   iddRight = {iddRight}
-          //   numHits = {numHits}
-          // />  
-                  
-              
-          // { showNext ?  <button className="next" onClick = { e => {handleSubmit(e, flag)} }>Next</button> : null  }

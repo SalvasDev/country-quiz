@@ -1,25 +1,28 @@
 import React, {useState, Fragment} from 'react'
 import Card from './components/Card';
 import Footer from './components/Footer';
-
+import { HitsContextProvider } from './components/context/StaticContext';
 
 
 function App() {
 
-const dataFlag = localStorage.getItem('Flag' || false)  
-const [ flag, setFlag ] = useState(dataFlag)
+
+function handleForce(){
+   window.location.reload()
+}
 
 let numTimes = 0;
-let numHits = 0;
+let dataFlag = false;
 
  return (
     <Fragment>
-          <Card 
-            flag = {flag}
-            setFlag = {setFlag} 
+        <HitsContextProvider>
+          <Card   
             numTimes = {numTimes}
-            numHits = {numHits}
+            handleForce = {handleForce}
+            dataFlag = {dataFlag}
           />             
+      </HitsContextProvider>
       <Footer author = "Salvador Sánchez"/> 
     </Fragment>
 
@@ -29,8 +32,3 @@ let numHits = 0;
 export default App
 
 
-// const [any, forceUpdate] = useReducer(num => num + 1, 0);
-// function handleForce(){
-//    forceUpdate()
-// }
-// handleForce = {handleForce}

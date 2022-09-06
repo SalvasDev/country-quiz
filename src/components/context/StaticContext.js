@@ -2,12 +2,12 @@ import React, {useState} from 'react'
 
 const Context = React.createContext({})
 
-export function NextContextProvider ({children}) {
-    const [ filled, setFilled ] = useState(false)
+export function HitsContextProvider ({children}) {
+    const [ hits, setHits ] = useState(0)
 
     return (
     
-    <Context.Provider value={{filled, setFilled}}>
+    <Context.Provider value={{hits, setHits}}>
         {children}
     </Context.Provider>
     )

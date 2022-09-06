@@ -11,7 +11,7 @@ const ListButtons = styled.div`
 
 
 
-const ListCountries = ({countries, iddRight, numHits}) => {
+const ListCountries = ({countries, iddRight}) => {
 
 const buttons = ['A', 'B', 'C', 'D'];
 
@@ -30,16 +30,14 @@ listRandom = listRandom.sort(function() {return Math.random() - 0.5});
 
 
                 return  <Btnsolut 
-
                   key = {i.toString()}
                   nameCountry = {name?.common} 
                   idd = {(idd?.root + idd?.suffixes).toString()} 
                   btnLetter = {btnInd} 
-                  status = ''
                   iddRight = {iddRight}
                   newButton = {'normal'}
-                  numHits = {numHits}
                   />
+
 
           })
 
@@ -49,4 +47,4 @@ listRandom = listRandom.sort(function() {return Math.random() - 0.5});
   )
 }
 
-export default ListCountries
+export default React.memo(ListCountries)

@@ -17,7 +17,7 @@ const getCountries =  async () => {
                 
             let numAleat = random();
             
-            if ((resultado.data[numAleat] !== undefined) && (resultado.data[numAleat].capital !== []))  {
+            if ((resultado.data[numAleat] !== undefined) && (resultado.data[numAleat].capital !== []) && (resultado.data[numAleat].capital))  {
                 countGroup.push(resultado.data[numAleat])                
             } else {
                 return   
@@ -31,7 +31,3 @@ const getCountries =  async () => {
    
  
 export default getCountries
-
-
-
-//     var flag = countriesg[numAleat].flags.svg;

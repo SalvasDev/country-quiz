@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useContext, useEffect, useState} from 'react'
+import StaticContext from './context/StaticContext'
 import styled from '@emotion/styled';
-import { isDisabled } from '@testing-library/user-event/dist/utils';
 
 
 const Container = styled.div`
@@ -99,10 +99,10 @@ button {
 
 
 
-const Btnsolut = ({nameCountry, btnLetter, idd, iddRight, newButton, numHits }) => {
+const Btnsolut = ({nameCountry, btnLetter, idd, iddRight, newButton}) => {
 
   const [ typeResp, setTypeResp ] = useState('');
-   const [ hits, setHits ] = useState(numHits)
+  const { hits, setHits } = useContext(StaticContext)
 
 
   useEffect( () => { 
@@ -112,15 +112,15 @@ const Btnsolut = ({nameCountry, btnLetter, idd, iddRight, newButton, numHits }) 
 
 
   
-  const handleClick = (e, idd, iddRight, setTypeResp) => {
+  const handleClick = (e, idd, iddRight, setTypeResp, hits, setHits) => {
     e.preventDefault()
 
     let respSolution = idd
 
     if (respSolution === iddRight) {
-      setHits(hits+1)
-      console.log(`Estos son los hits ${hits}`)
       setTypeResp('correct')
+      setHits(hits+1)
+
       
 
     } else {      
@@ -139,7 +139,7 @@ const Btnsolut = ({nameCountry, btnLetter, idd, iddRight, newButton, numHits }) 
         value = {idd}
         disabled = {false}
         key = {idd} 
-        onClick= {(e) => {handleClick(e, idd, iddRight, setTypeResp) }}
+        onClick= {(e) => {handleClick(e, idd, iddRight, setTypeResp, hits, setHits) }}
         className={typeResp}
         >{btnLetter} 
         <span className="solution" 
@@ -162,6 +162,5 @@ export default React.memo(Btnsolut)
 
 
 
-// useEffect(() => console.log(activebtn), [activebtn])
 
 

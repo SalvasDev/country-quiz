@@ -1,18 +1,19 @@
 import { useState, useEffect } from 'react'
 import getCountries from '../services/getCountries';
 
-export function useCountries(flag) {
 
 
-  const [ countries, setCountries ] = useState([])
+export function useCountries(times) {
+
+    const [ countries, setCountries ] = useState([])
+
+    useEffect( () => { 
+      getCountries().then(paises => setCountries(paises))
+
+    }, [times])
 
 
-  useEffect( () => { 
-    getCountries().then(paises => setCountries(paises))
-  }, [flag])
-
-
-return {countries}
+  return {countries}
     
 }
 
